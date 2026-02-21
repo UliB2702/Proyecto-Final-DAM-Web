@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CuentaController;
+use App\Http\Controllers\PostController;
+use App\Services\CuentaApiService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-//Route::get('/', [UsuarioController::class, 'index'])->name('inicio');
+Route::get('/', [PostController::class, 'index'])->name('inicio');
+Route::get('/cuenta/{usuario}', [CuentaController::class, 'cuentaUsuario'])->name('cuentaUsuario');
