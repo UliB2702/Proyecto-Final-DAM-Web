@@ -4,10 +4,26 @@
 
 }
 
+nav {
+    background-color: #0e6725 !important;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+    margin-right: 10px;
+}
+
+body {
+    background-color: #eaebd7;
+    height: 100%;
+}
 
 .sombra {
     box-shadow: inset;
 }
+
+
 
 aside {
     width: 30%;
@@ -18,7 +34,7 @@ aside {
     font-size: 20px;
 }
 
-section {
+.sectionIndex {
     padding-left: 5%;
     width: 70%;
     height: 875px;
@@ -46,42 +62,103 @@ li a {
     border-radius: 50%;
 }
 
-.headerPerfil{
+.headerPerfil {
     display: grid;
-    justify-content: center;
-    padding: 1%;
+    place-items: center;
+    padding: 2%;
 }
 
-.linkCuenta{
+.linkCerrar:hover {
+    color: red;
+}
+
+.linkCuenta {
     text-decoration: none;
     color: black;
 }
-.linkCuenta:hover{
-    color:green;
+
+.linkCuenta:hover {
+    color: green;
 }
 
-.fotoPerfilCuenta{
+.formularioCard {
+    padding: 40px;
+    size: 4;
+    align-items: center;
+    justify-content: center;
+}
+
+.tituloFormulario {
+    text-align: center;
+    text-decoration-style: solid;
+}
+
+.formularioRegistro {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#descripcion {
+    resize: none;
+}
+
+#texto{
+    resize: none;
+    width: 100%;
+}
+
+
+.contenedorLinks {
+    align-content: right;
+    
+}
+
+
+.linkSesion {
+    text-decoration: none;
+    color: black;
+    margin-right: 10px;
+}
+
+.linkSesion:hover {
+    color: cyan;
+}
+
+
+.fotoPerfilCuenta {
     width: 200px;
     height: 200px;
     border-radius: 50%;
 }
 
-.textoCentrado{
+.textoCentrado {
     text-align: center;
 }
 
-#descripcion{
-    background: rgb(224, 224, 224);
+#descripcion {
     padding: 10%;
     border-radius: 5px;
 }
 
-body{
-    background-color: rgb(182, 181, 181);
-    
+.descripcionPefil {
+    background-color: #DFCF99;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+
+    width: 30%;
+    border-radius: 5px;
+    margin-top: 2%;
 }
 
-.card{
+.card {
     margin-top: 25px;
     margin-bottom: 25px;
+}
+
+input{
+    width: 100%;
 }

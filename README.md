@@ -8,3 +8,6 @@ Cree la base del proyecto en laravel para ya tenerla subida, además de añadir 
 
 Implementacion de la api al proyecto y avanzando con las nuevas vistas
 
+## 22 de Febrero
+
+Implementadas las funciones de Crear Cuenta, Iniciar Sesion, Cerrar Sesion, Publicar post y borrarlo

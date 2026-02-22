@@ -12,7 +12,7 @@ class CuentaApiService
 
     public function __construct()
     {
-        $this->baseUrl = 'http://192.130.0.19:8080/apirest_placegiver/rest';
+        $this->baseUrl = 'http://localhost:8080/apirest_placegiver/rest';
     }
 
     public function obtenerDatosUsuario($nombre)

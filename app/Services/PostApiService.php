@@ -11,7 +11,7 @@ class PostApiService
 
     public function __construct()
     {
-        $this->baseUrl = 'http://192.130.0.19:8080/apirest_placegiver/rest';
+        $this->baseUrl = 'http://localhost:8080/apirest_placegiver/rest';
     }
 
     public function obtenerTodos()
@@ -23,8 +23,27 @@ class PostApiService
         return json_decode($response->body());
     }
 
-    public function obtenerPostDeUsuario($nombre){
-        $response = Http::get($this->baseUrl . '/posts/usuario?nombre='.$nombre);
+    public function obtenerPostDeUsuario($nombre)
+    {
+        $response = Http::get($this->baseUrl . '/posts/' . $nombre);
         return json_decode($response->body());
+    }
+
+    public function eliminar($id)
+    {
+        return Http::delete($this->baseUrl . '/posts/' . $id);
+    }
+
+    public function crearPost($data)
+    {
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+        ])
+            ->withBody(json_encode($data), 'application/json')
+            ->post($this->baseUrl . '/posts/publicar');
+
+        return json_decode($response->body());
+
     }
 }
