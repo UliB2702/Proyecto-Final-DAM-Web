@@ -16,17 +16,19 @@ class PostApiService
 
     public function obtenerTodos()
     {
-        // Realiza petición GET
         $response = Http::get($this->baseUrl . '/posts');
-        // body() devuelve el JSON como texto
-        // json_decode convierte JSON → objetos PHP
         return json_decode($response->body());
     }
 
     public function obtenerPostDeUsuario($nombre)
     {
         $response = Http::get($this->baseUrl . '/posts/' . $nombre);
-        return json_decode($response->body());
+        
+        if ($response->successful()) {
+            return json_decode($response->body());
+        }
+
+        return [];
     }
 
     public function eliminar($id)
@@ -44,6 +46,5 @@ class PostApiService
             ->post($this->baseUrl . '/posts/publicar');
 
         return json_decode($response->body());
-
     }
 }
