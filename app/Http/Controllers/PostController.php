@@ -2,21 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request; // Manejo de formularios
-use App\Services\PostApiService; // Importamos el servicio
+use Illuminate\Http\Request; 
+use App\Services\PostApiService;
 use App\Services\CuentaApiService;
 
+/**
+ * Controller where all pages related to posts are handled
+ */
 class PostController extends Controller
 {
-    // Propiedad con referencia al servicio
     private $api;
-    // Inyección de dependencias
-    // Laravel crea automáticamente el servicio
+
+    /**
+     * Sets the API Services used in this controller
+     * @param PostApiService $api API Service that controlls all the data related to Posts 
+     */
     public function __construct(PostApiService $api)
     {
         $this->api = $api;
     }
 
+    /**
+     * Verifies is there is a session with an actual user from the database and loads (if it's not valid, deletes the session) 
+     * the mosts recents posts for the 'index'
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View 'Index' view with the mosts recent posts
+     */
     public function index()
     {
         if (session()->has('usuario')) {
@@ -32,6 +42,11 @@ class PostController extends Controller
         return view('index', compact('posts'));
     }
 
+    /**
+     * Creates a Post in the database and infors if the creation was correct
+     * @param Request $request Data of the Post that wants to be created
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function publicarPost(Request $request)
     {
         $resultado = $this->api->crearPost($request->only(['texto', 'usuario']));
@@ -44,6 +59,11 @@ class PostController extends Controller
         }
     }
 
+    /**
+     * Eliminates a post and goes back to the 'inicio' route
+     * @param mixed $id Post's ID that wants to be deleted
+     * @return \Illuminate\Http\RedirectResponse Goes back to the 'inicio' view informing of the post deleted
+     */
     public function eliminar($id)
     {
         $this->api->eliminar($id);
@@ -51,6 +71,11 @@ class PostController extends Controller
             ->with('mensaje', 'Post eliminado correctamente');
     }
 
+    /**
+     * Eliminates a post and goes back to the current logged user page
+     * @param mixed $id Post's ID that wants to be deleted
+     * @return \Illuminate\Http\RedirectResponse Goes back to the 'cuentaUsuario' view informing of the post deleted
+     */
     public function eliminarEnCuenta($id)
     {
         $this->api->eliminar($id);
